@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useCallback } from "react";
+import { toast } from "sonner";
 
 export default function useFetch(fn) {
   const [loading, setLoading] = useState(false);
@@ -17,7 +18,7 @@ export default function useFetch(fn) {
         return result;
       } catch (err) {
         setError(err.message);
-        throw err;
+        toast.error(err.message);
       } finally {
         setLoading(false);
       }
