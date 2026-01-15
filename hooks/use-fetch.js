@@ -26,5 +26,5 @@ export default function useFetch(fn) {
     [fn]
   );
 
-  return { loading, data, error, fn: execute };
+  return { loading, data, error, fn: execute, setData };
 }
