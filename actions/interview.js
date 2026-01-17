@@ -12,6 +12,17 @@ const genAI = new GoogleGenAI({
   apiKey: process.env.GEMINI_API_KEY,
 });
 
+/**
+ * Convert current UTC time to IST and return as Date
+ * IST is UTC+5:30
+ */
+function getCurrentTimeInIST() {
+  const now = new Date();
+  // Add 5 hours and 30 minutes to get IST
+  const istTime = new Date(now.getTime() + 5.5 * 60 * 60 * 1000);
+  return istTime;
+}
+
 export async function generateQuiz() {
   const { userId } = await auth();
   if (!userId) throw new Error("Unauthorized");
@@ -125,6 +136,7 @@ export async function saveQuizResult(questions, answers, score) {
   }
 
   try {
+    const istTime = getCurrentTimeInIST();
     const assessment = await db.assessment.create({
       data: {
         userId: user.id,
@@ -132,6 +144,8 @@ export async function saveQuizResult(questions, answers, score) {
         questions: questionResults,
         category: "Technical",
         improvementTip,
+        createdAt: istTime,
+        updatedAt: istTime,
       },
     });
 
