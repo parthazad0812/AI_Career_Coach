@@ -26,7 +26,7 @@ const HeroSection = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-// Cards showing features
+  // Cards showing features
 
   return (
     <section className="w-full pt-36 md:pt-48 pb-10">
@@ -48,9 +48,9 @@ const HeroSection = () => {
               Get Started
             </Button>
           </Link>
-          <Link href="https://www.youtube.com/roadsidecoder">
+          <Link href="/about">
             <Button size="lg" variant="outline" className="px-8">
-              Watch Demo
+              Learn More
             </Button>
           </Link>
         </div>
@@ -68,7 +68,6 @@ const HeroSection = () => {
         </div>
       </div>
     </section>
-    
   );
 };
 
