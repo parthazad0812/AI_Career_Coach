@@ -116,8 +116,19 @@ export default function ResumeBuilder({ initialContent }) {
   const generatePDF = async () => {
     setIsGenerating(true);
     try {
-      const html2pdf = (await import("html2pdf.js")).default;
+      const html2pdfModule = await import("html2pdf.js");
+      const html2pdf = html2pdfModule.default || html2pdfModule;
+
+      if (typeof html2pdf !== "function") {
+        throw new Error("html2pdf failed to load");
+      }
+
       const element = document.getElementById("resume-pdf");
+
+      if (!element) {
+        toast.error("Resume preview is not ready for PDF export.");
+        return;
+      }
 
       // Clone the element to avoid modifying the original
       const clonedElement = element.cloneNode(true);
@@ -444,19 +455,20 @@ export default function ResumeBuilder({ initialContent }) {
               preview={resumeMode}
             />
           </div>
-          <div className="hidden">
-            <div id="resume-pdf">
-              <MDEditor.Markdown
-                source={previewContent}
-                style={{
-                  background: "white",
-                  color: "black",
-                }}
-              />
-            </div>
-          </div>
         </TabsContent>
       </Tabs>
+
+      <div className="hidden" aria-hidden="true">
+        <div id="resume-pdf">
+          <MDEditor.Markdown
+            source={previewContent}
+            style={{
+              background: "white",
+              color: "black",
+            }}
+          />
+        </div>
+      </div>
     </div>
   );
 }

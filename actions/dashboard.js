@@ -1,6 +1,7 @@
 "use server";
 
 import { db } from "@/lib/prisma";
+import { getNextUpdateInDays } from "@/lib/utils";
 import { auth } from "@clerk/nextjs/server";
 import { GoogleGenAI } from "@google/genai";
 
@@ -69,11 +70,28 @@ export async function getIndustryInsights() {
       data: {
         industry: user.industry,
         ...insights,
-        nextUpdate: new Date(Date.now() + 7 * 24 * 60 * 60 * 1000),
+        nextUpdate: getNextUpdateInDays(),
       },
     });
 
     return industryInsight;
+  }
+
+  // Safety net: refresh stale insights on read if scheduled jobs missed.
+  const now = new Date();
+  if (user.industryInsight.nextUpdate <= now) {
+    const insights = await generateAIInsights(user.industry);
+
+    const refreshedInsight = await db.industryInsight.update({
+      where: { industry: user.industry },
+      data: {
+        ...insights,
+        lastUpdated: now,
+        nextUpdate: getNextUpdateInDays(now),
+      },
+    });
+
+    return refreshedInsight;
   }
 
   return user.industryInsight;

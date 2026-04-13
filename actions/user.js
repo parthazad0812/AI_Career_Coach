@@ -1,6 +1,7 @@
 "use server";
 
 import { db } from "@/lib/prisma";
+import { getNextUpdateInDays } from "@/lib/utils";
 import { auth } from "@clerk/nextjs/server";
 import { generateAIInsights } from "./dashboard";
 
@@ -37,7 +38,7 @@ export async function updateUser(data) {
             data: {
               industry: data.industry,
               ...insights,
-              nextUpdate: new Date(Date.now() + 7 * 24 * 60 * 60 * 1000),
+              nextUpdate: getNextUpdateInDays(),
             },
           });
         }
@@ -65,7 +66,7 @@ export async function updateUser(data) {
       },
       {
         timeout: 10000, //default 5000
-      }
+      },
     );
 
     return { success: true, ...result };
@@ -75,7 +76,6 @@ export async function updateUser(data) {
     throw error;
   }
 }
-
 
 // fetching user onboarding statu
 
