@@ -1,36 +1,139 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# 🚀 CareerPilot – AI-Powered Career Coach  
 
-## Getting Started
+🔗 **Live App:** https://careerpilot-your-ai.vercel.app/  
+📂 **Repository:** https://github.com/parthazad0812/AI_Career_Coach  
 
-First, run the development server:
+---
 
+## 🧠 What is CareerPilot?
+
+**CareerPilot** is an AI-powered platform that helps students and early professionals make **data-driven career decisions**.
+
+Instead of random advice from the internet, it provides:
+- 🎯 Personalized career paths  
+- 🗺️ Structured learning roadmaps  
+- 💬 AI-driven interview preparation  
+- 🌐 Instant portfolio assistance  
+
+👉 Think of it as a **24/7 AI mentor for your career growth**
+
+---
+
+## ⚡ Key Features
+
+### 🎯 Personalized Career Recommendations
+- Input your **skills, interests, and goals**
+- Get tailored career suggestions powered by AI
+
+---
+
+### 🗺️ Roadmap Generator
+- Step-by-step plan to reach your target role
+- Includes:
+  - Required skills  
+  - Tools & technologies  
+  - Learning sequence  
+
+---
+
+### 💬 AI Interview Preparation
+- Role-specific interview questions  
+- Simulated practice  
+- Helps improve confidence & clarity  
+
+---
+
+### 🌐 Portfolio Generator
+- Generate structured portfolio content instantly  
+- Useful for beginners who don’t know how to start  
+
+---
+
+### 🔐 Authentication
+- Secure user login  
+- Personalized experience per user  
+
+---
+
+## 🛠️ Tech Stack
+
+**Frontend**
+- Next.js  
+- React.js  
+- Tailwind CSS  
+- ShadCN UI  
+
+**Backend**
+- Node.js / API Routes  
+
+**Database**
+- MongoDB / Prisma  
+
+**AI Integration**
+- Gemini API / OpenAI  
+
+**Authentication**
+- Clerk / JWT  
+
+**Deployment**
+- Vercel  
+
+---
+
+## 📊 Problem It Solves
+
+Most students struggle with:
+- ❌ No clear career direction  
+- ❌ Overwhelming learning paths  
+- ❌ Lack of structured guidance  
+- ❌ Poor interview preparation  
+
+👉 CareerPilot converts **confusion → structured execution**
+
+---
+
+## ⚙️ Local Setup
+
+### 1. Clone the repo
 ```bash
+git clone https://github.com/parthazad0812/AI_Career_Coach.git
+cd AI_Career_Coach
+
+npm install
+
+NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY=
+CLERK_SECRET_KEY=
+GEMINI_API_KEY=
+DATABASE_URL=
+
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+User Input (skills + goals)
+        ↓
+AI Processing (LLM APIs)
+        ↓
+Career Analysis
+        ↓
+Output:
+- Career Suggestions
+- Roadmaps
+- Interview Questions
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+🚀 Future Improvements
+📄 Resume Analyzer
+📊 Job Market Insights Dashboard
+🔗 LinkedIn/GitHub Integration
+🤝 Mentor Matching System
+🎯 AI-based Job Recommendations
+👨‍💻 Author
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Parth Azad
 
-## Learn More
+GitHub: https://github.com/parthazad0812
+⭐ Support
 
-To learn more about Next.js, take a look at the following resources:
+If you found this useful:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+⭐ Star the repo
+🍴 Fork it
+📢 Share it
